@@ -11,16 +11,16 @@ function GameManager(size, InputManager, Actuator) {
   this.inputManager.on(
     "think",
     function () {
-      var best = this.ai.getBest();
-
       this.actuator.showHint(best.move);
 
-      // this.printGrid(this.grid);
-      // turn++;
-    
-      // let d = ["up", "right", "down", "left"];
-      // console.log("" + turn + ": " + d[best.move] + ": " + best.moves.toString());
+      this.printGrid(this.grid);
+      turn++;
 
+      var best = this.ai.getBest();
+      let d = ["up", "right", "down", "left"];
+      console.log(
+        "" + turn + ": " + d[best.move] + ": " + best.moves.toString()
+      );
     }.bind(this)
   );
 
@@ -39,7 +39,7 @@ function GameManager(size, InputManager, Actuator) {
   );
 
   this.setup();
-};
+}
 
 // Restart the game
 GameManager.prototype.restart = function () {
@@ -75,7 +75,6 @@ GameManager.prototype.actuate = function () {
 
 // makes a given move and updates state
 GameManager.prototype.move = function (direction) {
-
   var result = this.grid.move(direction);
 
   if (!result.moved) return false;
@@ -89,14 +88,6 @@ GameManager.prototype.move = function (direction) {
   } else {
     this.won = true;
   }
-
-  this.printGrid(this.grid);
-  turn++;
-
-  var best = this.ai.getBest();
-
-  let d = ["up", "right", "down", "left"];
-  console.log("" + turn + ": " + d[best.move] + ": " + best.moves.toString());
 
   //console.log(this.grid.valueSum());
 
