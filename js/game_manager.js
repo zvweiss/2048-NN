@@ -11,6 +11,7 @@ function GameManager(size, InputManager, Actuator) {
   this.inputManager.on(
     "think",
     function () {
+      var best = this.ai.getBest();
       this.actuator.showHint(best.move);
 
       this.printGrid(this.grid);
