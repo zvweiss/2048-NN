@@ -119,7 +119,6 @@ GameManager.prototype.printGrid = function (g) {
         rows[j][i] = "    _";
       }
     }
-    //console.log(aRow);
   }
   for (let ii = 0; ii < 4; ii++) {
     let aRow = "";
@@ -133,9 +132,6 @@ GameManager.prototype.printGrid = function (g) {
 // moves continuously until game is over
 GameManager.prototype.run = function () {
   var best = this.ai.getBest();
-
-  // console.log("" + turn);
-  // turn++;
 
   this.printGrid(this.grid);
   turn++;
